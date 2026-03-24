@@ -18,8 +18,8 @@ export class ClipsService {
 
   constructor(private readonly processor: ClipGenerationProcessor) {}
 
-  generateClip(job: ClipGenerationJob): Clip {
-    const clip = this.processor.process(job);
+  async generateClip(job: ClipGenerationJob): Promise<Clip> {
+    const clip = await this.processor.process(job);
     this.clips.push(clip);
     return clip;
   }
